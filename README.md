@@ -31,6 +31,8 @@ THEN I can save my initials and score
 ## What Concepts Were Learned
 Using local storage to save high scores
 
+Using sort function
+
 Looping through data to display to the screen
 
 Adding event listeners using vanilla javscript
