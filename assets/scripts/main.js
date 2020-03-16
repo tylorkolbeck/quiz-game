@@ -125,7 +125,7 @@ function handleFormSubmit(event) {
     } else {
         localStorageData = []
     }
-    localStorageData.push([initialsInputEl.value, score])
+    localStorageData.push([initialsInputEl.value.toUpperCase(), score])
     localStorage.setItem("quizGame", JSON.stringify(localStorageData))
     initialsFormEl.removeEventListener('submit', handleFormSubmit)
     window.location.href = "./highscore.html"
