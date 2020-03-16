@@ -16,10 +16,10 @@ let answeredCorrectly = 0
 let answeredWrong = 0
 let answers = []
 let score
-let timerId = setInterval(countDownHandler, 1000)
+let timerId 
 
 // Start The Game
-init()
+// init()
 
 function countDownHandler() {
     if (timeRemaing > 0) {
@@ -34,6 +34,7 @@ function countDownHandler() {
 }
 
 function init() {
+    timerId = setInterval(countDownHandler, 1000)
     updateUI()
 }
 
