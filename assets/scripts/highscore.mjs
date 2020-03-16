@@ -1,9 +1,9 @@
 let scoresListEl = document.getElementById('high-scores-list')
 let scores = JSON.parse(localStorage.getItem('quizGame'))
 
-document.getElementsByClassName("go-home-btn")
+let backButton = document.getElementById("back-btn")
 
-document.addEventListener("click", () => {window.location.href = "index.html"})
+backButton.addEventListener("click", () => {window.location.href = "index.html"})
 
 
 // Sort the scores so that the list goes highest score to lowest
