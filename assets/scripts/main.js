@@ -12,7 +12,7 @@ let solutionEl = document.getElementById("game-card-solution")
 
 answersListEl.addEventListener("click", handleAnswerSelection)
 
-let timeRemaing = 59
+let timeRemaing = 10
 let currentQuestionIndex = 0
 let answeredCorrectly = 0
 let answeredWrong = 0
@@ -26,7 +26,9 @@ function countDownHandler() {
     if (timeRemaing > 0) {
         timeRemaing--
         timerEl.textContent = `Timer: ${timeRemaing}s`
-    } else {
+    } else if (timeRemaing <= 0) {
+        timeRemaing = 0
+        timerEl.textContent = "Times Up!"
         clearInterval(timerId)
         endGameAndShowScore()
     }
@@ -71,6 +73,7 @@ function showAnswer() {
         clearInterval(timerId)
         endGameAndShowScore()
     }
+
     // Add the event listener again after the timeout is done
     answersListEl.addEventListener("click", handleAnswerSelection)
 
@@ -78,27 +81,28 @@ function showAnswer() {
 
 function updateUI() {
     clearUI()
+    if (timeRemaing > 0) {
+        questionHeaderEl.textContent = `${currentQuestionIndex} of ${questionsArray.length}: ${questionsArray[currentQuestionIndex].question}`
 
-
-    questionHeaderEl.textContent = `${currentQuestionIndex} of ${questionsArray.length}: ${questionsArray[currentQuestionIndex].question}`
-
-    answers = questionsArray[currentQuestionIndex].answers.map((answer, index) => {
-        let li = document.createElement("li")
-        li.setAttribute("data-index", index)
-        li.textContent = answer
-        return li
-    })
-
-    answers.forEach(answerEl => answersListEl.appendChild(answerEl))
-
+        answers = questionsArray[currentQuestionIndex].answers.map((answer, index) => {
+            let li = document.createElement("li")
+            li.setAttribute("data-index", index)
+            li.textContent = answer
+            return li
+        })
     
+        answers.forEach(answerEl => answersListEl.appendChild(answerEl)) 
+    } else {
+        endGameAndShowScore()
+    }
+
 }
 
 function clearUI() {
     solutionEl.style.display = 'none'
     answers = []
-    answersListEl.innerHTML = ""
-    questionHeaderEl.innerHTML = ""
+    answersListEl.textContent = ""
+    questionHeaderEl.textContent = ""
 }
 
 function endGameAndShowScore() {
