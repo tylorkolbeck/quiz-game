@@ -1,4 +1,4 @@
-let questionsArrayRaw = [
+export let questionsArrayRaw = [
     {
         answer: 1,
         question: 'What does the method Array.prototype.forEach() return?',
@@ -25,3 +25,5 @@ let questionsArrayRaw = [
         answers: ['undefined', 'New Array With Deleted Elements', 'Original Array Without Deleted Elements', 'An Empty Array']
     }
 ] 
+
+// export questionsArrayRaw

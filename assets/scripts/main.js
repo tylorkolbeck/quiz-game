@@ -1,9 +1,6 @@
+import { questionsArrayRaw } from '../questions/questions.mjs'
 
-// WARNING GRAPHIC CONTENT - CLOSE YOUR EYES
-// This questions array is being grabbed from global scope which
-// is being loaded in by a script tag in index.html
 let questionsArray = [...questionsArrayRaw]
-// END GRAPHIC CONTENT - YOU CAN OPEN YOUR EYES NOW
 
 let questionHeaderEl = document.getElementById("game-card-question")
 let answersListEl = document.getElementById("game-card-answer-list")
@@ -108,7 +105,7 @@ function clearUI() {
 function endGameAndShowScore() {
     clearUI()
     questionHeaderEl.textContent = "Game Over!"
-    li = document.createElement('li')
+    let li = document.createElement('li')
     li.setAttribute("class", "list-no-decoration")
     answersListEl.textContent = `You got ${answeredCorrectly} right and ${answeredWrong} wrong.`
 }
