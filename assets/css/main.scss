@@ -1,0 +1,96 @@
+$color-primary: #e43a15;
+$color-background:white;
+$color-card-background: white;
+$color-card-header: #70DDFF;
+$color-font-primary: #e43a15;
+$color-font-white: #eee;
+
+a {
+    text-decoration: none;
+    color: $color-primary;
+}
+
+.c-white {
+    color: $color-font-white;
+}
+
+html, body, h1, h2, h3, h4 {
+    margin: 0px;
+    padding: 0px;
+}
+
+
+html {
+    height: 100%;
+    position: relative;
+    font-family: 'Baloo 2', cursive;
+    box-sizing: border-box;
+    background: $color-background;
+}
+
+body {
+    padding: 20px;
+}
+
+.game-card-answers-wrapper {
+    padding: 20px 0px 20px 50px;
+    & ol {
+        display: inline-block
+    }
+    
+    & ol, li {
+        margin: 0px;
+        padding: 0px;
+    }
+    
+    & ol li {
+        margin: 10px 0px;
+        padding: 6px 10px;
+
+        &:hover {
+            border-radius: 6px;
+            cursor: pointer;
+            background: $color-primary;
+        }
+    }
+}
+
+
+#timer {
+    position: absolute;
+    top: 0;
+    right: 0;
+    color: $color-primary;
+    padding: 20px;
+}
+
+#highscore-link {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 20px;
+}
+
+#game-card {
+    position: relative;
+    max-width: 600px;
+    background: $color-card-background;
+    margin: 100px auto;
+    border-radius: 6px;
+    box-shadow: 2px 2px 5px rgba(0,0,0, .4);
+}
+
+.game-card-header {
+    border-radius: 6px 6px 0px 0px;
+    color: $color-font-white;
+    padding: 30px;
+    background-image: linear-gradient(10deg, #e43a15, #e65245)
+}
+
+
+#game-card-solution {
+    display: none;
+    padding: 30px;
+    width: 90%;
+    border-top: 1px solid lightgrey;
+}
