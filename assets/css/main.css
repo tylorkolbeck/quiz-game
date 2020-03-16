@@ -27,6 +27,59 @@ body {
   background-repeat: repeat;
 }
 
+input {
+  padding: 6px 12px;
+}
+input:focus {
+  outline: none;
+}
+
+.u-m-r-sm {
+  margin-right: 6px;
+}
+
+.u-m-l-sm {
+  margin-left: 6px;
+}
+
+.u-m-y-sm {
+  margin-top: 6px;
+  margin-bottom: 6px;
+}
+
+.u-m-x-sm {
+  margin-right: 6px;
+  margin-left: 6px;
+}
+
+.u-m-r-md {
+  margin-right: 12px;
+}
+
+.u-m-l-md {
+  margin-left: 12px;
+}
+
+.u-m-y-md {
+  margin-top: 12px;
+  margin-bottom: 12px;
+}
+
+.u-m-x-md {
+  margin-right: 12px;
+  margin-left: 12px;
+}
+
+.btn {
+  padding: 0 14px;
+  line-height: 34px;
+  background: #e43a15;
+  border-radius: 6px;
+  outline: none;
+  border-width: 0px;
+  color: white;
+}
+
 .game-card-answers-wrapper {
   padding: 20px 0px 20px 50px;
 }
@@ -83,6 +136,24 @@ body {
   padding: 30px;
   width: 90%;
   border-top: 1px solid lightgrey;
+}
+
+#initals-form {
+  display: none;
+}
+
+li.list-no-decoration {
+  list-style: none;
+  padding-left: 0px;
+  background: white;
+}
+
+ol li.list-no-decoration {
+  padding-left: 0px;
+}
+
+ol li.list-no-decoration:hover {
+  background: none;
 }
 
 /*# sourceMappingURL=main.css.map */

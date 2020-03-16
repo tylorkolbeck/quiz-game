@@ -1,19 +1,21 @@
 import { questionsArrayRaw } from '../questions/questions.mjs'
 
 let questionsArray = [...questionsArrayRaw]
-
 let questionHeaderEl = document.getElementById("game-card-question")
 let answersListEl = document.getElementById("game-card-answer-list")
 let timerEl = document.getElementById("timer")
 let solutionEl = document.getElementById("game-card-solution")
+let initialsFormEl = document.getElementById("initals-form")
+let initialsInputEl = document.getElementById("initials-input")
 
 answersListEl.addEventListener("click", handleAnswerSelection)
 
-let timeRemaing = 59
+let timeRemaing = 1
 let currentQuestionIndex = 0
 let answeredCorrectly = 0
 let answeredWrong = 0
 let answers = []
+let score
 let timerId = setInterval(countDownHandler, 1000)
 
 // Start The Game
@@ -30,7 +32,6 @@ function countDownHandler() {
         endGameAndShowScore()
     }
 }
-
 
 function init() {
     updateUI()
@@ -73,7 +74,6 @@ function showAnswer() {
 
     // Add the event listener again after the timeout is done
     answersListEl.addEventListener("click", handleAnswerSelection)
-
 }
 
 function updateUI() {
@@ -92,7 +92,6 @@ function updateUI() {
     } else {
         endGameAndShowScore()
     }
-
 }
 
 function clearUI() {
@@ -103,10 +102,33 @@ function clearUI() {
 }
 
 function endGameAndShowScore() {
+    // FIGURE OUT HOW TO MAKE A REUSABLE LI INSTANCE
     clearUI()
-    questionHeaderEl.textContent = "Game Over!"
-    let li = document.createElement('li')
-    li.setAttribute("class", "list-no-decoration")
-    answersListEl.textContent = `You got ${answeredCorrectly} right and ${answeredWrong} wrong.`
+    initialsFormEl.addEventListener('submit', handleFormSubmit)
+    score = (timeRemaing + 1) * answeredCorrectly - answeredWrong
+    questionHeaderEl.textContent = `Game Over - Score ${score}`
+    initialsFormEl.style.display = 'block'
+
+    let scoreLi = document.createElement('li')
+    scoreLi.setAttribute("class", "list-no-decoration")
+    scoreLi.textContent = `You got ${answeredCorrectly} right and ${answeredWrong} wrong.`
+    answersListEl.appendChild(scoreLi)
+}
+
+
+function handleFormSubmit(event) {
+    event.preventDefault()
+
+    let localStorageData = localStorage.getItem("quizGame")
+    if (localStorageData) {
+        localStorageData = JSON.parse(localStorageData)
+    } else {
+        localStorageData = []
+    }
+    localStorageData.push([initialsInputEl.value, score])
+    localStorage.setItem("quizGame", JSON.stringify(localStorageData))
+    initialsFormEl.removeEventListener('submit', handleFormSubmit)
+    window.location.href = "./highscore.html"
+    
 }
 
