@@ -12,9 +12,6 @@ let sortedScores = scores.sort(function (a, b) {
 });
 
 
-
-console.log(sortedScores)
-
 sortedScores.forEach(score => {
     let li = document.createElement('li')
     li.textContent = `${score[0]} - ${score[1]}`
