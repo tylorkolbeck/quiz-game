@@ -20,7 +20,7 @@ let answers = []
 let timerId = setInterval(countDownHandler, 1000)
 
 function countDownHandler() {
-    if (timeRemaing > 1) {
+    if (timeRemaing > 0) {
         timeRemaing--
         timerEl.textContent = `Timer: ${timeRemaing}s`
     } else {
@@ -56,7 +56,7 @@ function showAnswer() {
     // Check to see if it was the last question
     if (currentQuestionIndex < questionsArray.length) {
         updateUI()
-    } else {
+    } else { // Game is over
         clearUI()
         clearInterval(timerId)
     }
