@@ -14,7 +14,6 @@ let timeRemaing = 59
 let currentQuestionIndex = 0
 let answeredCorrectly = 0
 let answeredWrong = 0
-let gameStarted = false
 let answers = []
 let score
 let timerId 
@@ -37,14 +36,14 @@ function countDownHandler() {
 function init() {
     buildInstructionsElements()
     let li = document.createElement('li')
-    let startButton = document.createElement('button')
-    startButton.setAttribute("class", "btn")
-
-    startButton.addEventListener("click", startGame)
-
-    startButton.textContent = 'Start Game'
     li.setAttribute("class", "list-no-decoration")
     li.textContent = "Answer the questions as quickly as you can to get the highest score possible. Every question you get right is a multiplier to your overall score. If you get a questions wrong then you lose 10 seconds off your time but if you get a question right you get 5 seconds added to your time."
+    
+    let startButton = document.createElement('button')
+    startButton.setAttribute("class", "btn")
+    startButton.addEventListener("click", startGame)
+    startButton.textContent = 'Start Game'
+
     answersListEl.appendChild(li)
     answersListEl.appendChild(startButton)
 
