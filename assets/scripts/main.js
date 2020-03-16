@@ -21,6 +21,17 @@ let timerId
 // Start The Game
 init()
 
+
+
+function init() {
+    buildInstructionsElements()
+}
+
+function startGame() {
+    timerId = setInterval(countDownHandler, 1000)
+    updateUI()
+}
+
 function countDownHandler() {
     if (timeRemaing > 0) {
         timeRemaing--
@@ -33,29 +44,20 @@ function countDownHandler() {
     }
 }
 
-function init() {
-    buildInstructionsElements()
-    let li = document.createElement('li')
-    li.setAttribute("class", "list-no-decoration")
-    li.textContent = "Answer the questions as quickly as you can to get the highest score possible. Every question you get right is a multiplier to your overall score. If you get a questions wrong then you lose 10 seconds off your time but if you get a question right you get 5 seconds added to your time."
-    
+function buildInstructionsElements() {
+    questionHeaderEl.textContent = "Game Rules"
+
     let startButton = document.createElement('button')
     startButton.setAttribute("class", "btn")
     startButton.addEventListener("click", startGame)
     startButton.textContent = 'Start Game'
 
+    let li = document.createElement('li')
+    li.setAttribute("class", "list-no-decoration")
+    li.textContent = "Answer the questions as quickly as you can to get the highest score possible. Every question you get right is a multiplier to your overall score. If you get a questions wrong then you lose 10 seconds off your time but if you get a question right you get 5 seconds added to your time."
+
     answersListEl.appendChild(li)
     answersListEl.appendChild(startButton)
-
-}
-
-function startGame() {
-    timerId = setInterval(countDownHandler, 1000)
-    updateUI()
-}
-
-function buildInstructionsElements() {
-    questionHeaderEl.textContent = "Game Rules"
 }
 
 function handleAnswerSelection(event) {
@@ -123,7 +125,6 @@ function clearUI() {
 }
 
 function endGameAndShowScore() {
-    // FIGURE OUT HOW TO MAKE A REUSABLE LI INSTANCE
     clearUI()
     initialsFormEl.addEventListener('submit', handleFormSubmit)
     score = (timeRemaing + 1) * answeredCorrectly - answeredWrong
