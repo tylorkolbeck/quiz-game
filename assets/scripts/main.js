@@ -19,6 +19,9 @@ let answeredWrong = 0
 let answers = []
 let timerId = setInterval(countDownHandler, 1000)
 
+// Start The Game
+init()
+
 function countDownHandler() {
     if (timeRemaing > 0) {
         timeRemaing--
@@ -29,7 +32,10 @@ function countDownHandler() {
     }
 }
 
-updateUI()
+
+function init() {
+    updateUI()
+}
 
 function handleAnswerSelection(event) {
     if (event.target.nodeName === 'LI') {
@@ -49,6 +55,9 @@ function checkRightOrWrong(answerIndex) {
         solutionEl.textContent = 'Wrong -10 secs'
     }
     currentQuestionIndex += 1
+
+    // Remove the event listener during the time out to prevent inadvertant skipping of questions
+    answersListEl.removeEventListener("click", handleAnswerSelection)
     solutionEl.style.display = 'block'
     setTimeout(showAnswer, 1000) // Timeout to show if it was right or wrong
 }
@@ -62,6 +71,9 @@ function showAnswer() {
         clearInterval(timerId)
         endGameAndShowScore()
     }
+    // Add the event listener again after the timeout is done
+    answersListEl.addEventListener("click", handleAnswerSelection)
+
 }
 
 function updateUI() {
