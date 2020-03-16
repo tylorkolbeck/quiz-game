@@ -9,7 +9,7 @@ let solutionEl = document.getElementById("game-card-solution")
 
 answersListEl.addEventListener("click", handleAnswerSelection)
 
-let timeRemaing = 10
+let timeRemaing = 59
 let currentQuestionIndex = 0
 let answeredCorrectly = 0
 let answeredWrong = 0
