@@ -10,7 +10,7 @@ let initialsInputEl = document.getElementById("initials-input")
 
 answersListEl.addEventListener("click", handleAnswerSelection)
 
-let timeRemaing = 1
+let timeRemaing = 59
 let currentQuestionIndex = 0
 let answeredCorrectly = 0
 let answeredWrong = 0
