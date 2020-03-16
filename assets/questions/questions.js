@@ -6,7 +6,7 @@ let questionsArrayRaw = [
     },
     {
         answer: 1,
-        question: 'T/F: Array.prototype.push() returns the array that was modified?',
+        question: 'T/F Array.prototype.push() returns the array that was modified?',
         answers: ['True', 'False']
     },
     {
@@ -16,7 +16,7 @@ let questionsArrayRaw = [
     },
     {
         answer: 1,
-        question: 'T/F: Array.prototype.findIndex() returns false when it does not find a match',
+        question: 'T/F Array.prototype.findIndex() returns false when it does not find a match',
         answers: ['True', 'False']
     },
     {
