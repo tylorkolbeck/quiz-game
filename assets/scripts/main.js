@@ -48,19 +48,17 @@ function checkRightOrWrong(answerIndex) {
         solutionEl.textContent = 'Wrong -10 secs'
     }
     currentQuestionIndex += 1
-
-    setTimeout(showAnswer, 1000)
-
     solutionEl.style.display = 'block'
+    setTimeout(showAnswer, 1000) // Timeout to show if it was right or wrong
+}
 
-    function showAnswer() {
-        // Check to see if it was the last question
-        if (currentQuestionIndex < questionsArray.length) {
-            updateUI()
-        } else {
-            clearUI()
-            clearInterval(timerId)
-        }
+function showAnswer() {
+    // Check to see if it was the last question
+    if (currentQuestionIndex < questionsArray.length) {
+        updateUI()
+    } else {
+        clearUI()
+        clearInterval(timerId)
     }
 }
 
