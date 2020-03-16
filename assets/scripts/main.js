@@ -25,6 +25,7 @@ function countDownHandler() {
         timerEl.textContent = `Timer: ${timeRemaing}s`
     } else {
         clearInterval(timerId)
+        endGameAndShowScore()
     }
 }
 
@@ -59,14 +60,16 @@ function showAnswer() {
     } else { // Game is over
         clearUI()
         clearInterval(timerId)
+        endGameAndShowScore()
     }
 }
 
 function updateUI() {
     clearUI()
 
+
     questionHeaderEl.textContent = `${currentQuestionIndex} of ${questionsArray.length}: ${questionsArray[currentQuestionIndex].question}`
-    
+
     answers = questionsArray[currentQuestionIndex].answers.map((answer, index) => {
         let li = document.createElement("li")
         li.setAttribute("data-index", index)
@@ -75,6 +78,8 @@ function updateUI() {
     })
 
     answers.forEach(answerEl => answersListEl.appendChild(answerEl))
+
+    
 }
 
 function clearUI() {
@@ -85,6 +90,10 @@ function clearUI() {
 }
 
 function endGameAndShowScore() {
-
+    clearUI()
+    questionHeaderEl.textContent = "Game Over!"
+    li = document.createElement('li')
+    li.setAttribute("class", "list-no-decoration")
+    answersListEl.textContent = `You got ${answeredCorrectly} right and ${answeredWrong} wrong.`
 }
 
