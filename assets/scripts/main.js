@@ -21,10 +21,8 @@ let timerId
 // Start The Game
 init()
 
-
-
 function init() {
-    buildInstructionsElements()
+    showGameInstructions()
 }
 
 function startGame() {
@@ -32,6 +30,10 @@ function startGame() {
     updateUI()
 }
 
+/**
+ * Keeps track of timer interval
+ * if time is up then end the quiz
+ */
 function countDownHandler() {
     if (timeRemaing > 0) {
         timeRemaing--
@@ -44,7 +46,11 @@ function countDownHandler() {
     }
 }
 
-function buildInstructionsElements() {
+/**
+ * Builds and shows the game instructions before the 
+ * quiz game begins
+ */
+function showGameInstructions() {
     questionHeaderEl.textContent = "Game Rules"
 
     let startButton = document.createElement('button')
@@ -60,6 +66,14 @@ function buildInstructionsElements() {
     answersListEl.appendChild(startButton)
 }
 
+
+/**
+ * 
+ * @param {*} event 
+ * checks event to see if the clicked object was an 
+ * answer option then passeses the answers index along to 
+ * check answer function
+ */
 function handleAnswerSelection(event) {
     if (event.target.nodeName === 'LI') {
         let answerIndex = parseInt(event.target.getAttribute('data-index'))
@@ -67,6 +81,12 @@ function handleAnswerSelection(event) {
     }
 }
 
+/**
+ * 
+ * @param {num} answerIndex 
+ * determines if the answer is right or wrong 
+ * and shows it on the dom for 1 second
+ */
 function checkRightOrWrong(answerIndex) {
     if (questionsArray[currentQuestionIndex].answer === answerIndex) {
         answeredCorrectly++
@@ -81,10 +101,16 @@ function checkRightOrWrong(answerIndex) {
 
     // Remove the event listener during the time out to prevent inadvertant skipping of questions
     answersListEl.removeEventListener("click", handleAnswerSelection)
+
     solutionEl.style.display = 'block'
     setTimeout(showAnswer, 1000) // Timeout to show if it was right or wrong
 }
 
+
+/**
+ * update UI after showing if answer was 
+ * right or wrong
+ */
 function showAnswer() {
     // Check to see if it was the last question
     if (currentQuestionIndex < questionsArray.length) {
@@ -99,6 +125,9 @@ function showAnswer() {
     answersListEl.addEventListener("click", handleAnswerSelection)
 }
 
+/**
+ * update UI with the question and answer option
+ */
 function updateUI() {
     clearUI()
     if (timeRemaing > 0) {
@@ -117,6 +146,9 @@ function updateUI() {
     }
 }
 
+/**
+ * clear all UI from the game card
+ */
 function clearUI() {
     solutionEl.style.display = 'none'
     answers = []
@@ -124,6 +156,11 @@ function clearUI() {
     questionHeaderEl.textContent = ""
 }
 
+/**
+ * clears the UI and show the player the number
+ * of questions answered correctly and
+ * their score
+ */
 function endGameAndShowScore() {
     clearUI()
     initialsFormEl.addEventListener('submit', handleFormSubmit)
@@ -138,6 +175,11 @@ function endGameAndShowScore() {
 }
 
 
+/**
+ * 
+ * @param {*} event 
+ * handles the form submit and stores the scores in local storage
+ */
 function handleFormSubmit(event) {
     event.preventDefault()
 
@@ -151,6 +193,5 @@ function handleFormSubmit(event) {
     localStorage.setItem("quizGame", JSON.stringify(localStorageData))
     initialsFormEl.removeEventListener('submit', handleFormSubmit)
     window.location.href = "./highscore.html"
-    
 }
 
