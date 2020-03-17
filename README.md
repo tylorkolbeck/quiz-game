@@ -1,6 +1,6 @@
 
 ## Demo
-
+[Check out the demo](https://tylorkolbeck.github.io/quiz-game/.)
 
 ## User Story
 
