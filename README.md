@@ -2,6 +2,8 @@
 ## Demo
 [Check out the demo](https://tylorkolbeck.github.io/quiz-game/.)
 
+![Screenshot](/assets/images/quiz-game-demo.mp4)
+
 ## User Story
 
 ```
