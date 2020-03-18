@@ -2,7 +2,7 @@
 ## Demo
 [Check out the demo](https://tylorkolbeck.github.io/quiz-game/.)
 
-![Screenshot](/assets/images/quiz-game-demo.mp4)
+![Screenshot](/assets/images/quiz-demo.jpg)
 
 ## User Story
 
